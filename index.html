@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Cat Facts</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .fact-box {
+      border: 2px solid #ccc;
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="fact-box" id="factBox">
+    <!-- Cat fact will be displayed here -->
+  </div>
+  <button id="factButton">Show Random Cat Fact</button>
+  <button id="twitterButton">Share to Twitter</button>
+  
+  <script>
+    const factBox = document.getElementById('factBox');
+    const factButton = document.getElementById('factButton');
+    const twitterButton = document.getElementById('twitterButton');
+
+    const catFacts = [
+      "Cats are crepuscular, which means they are most active during dawn and dusk.",
+      "A cat's nose is unique, just like a human fingerprint.",
+      "The average cat sleeps for about 12-16 hours a day.",
+      "Cats have a third eyelid, called a nictitating membrane, that helps protect their eyes.",
+      "A group of cats is called a clowder.",
+      "Cats only have about 1/6th of the taste buds that humans have.",
+      "The oldest cat lived to be 38 years old.",
+      "Cats use their whiskers to help them navigate and sense their surroundings.",
+      "Cats have a purr box in their throat that can vibrate at a variety of frequencies.",
+      "Cats can jump up to six times their height."
+    ];
+
+    function displayFact() {
+      const randomIndex = Math.floor(Math.random() * catFacts.length);
+      factBox.textContent = catFacts[randomIndex];
+      factBox.style.opacity = 1; // Fade in effect
+    }
+
+    function shareToTwitter() {
+      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(factBox.textContent)}`;
+      window.open(twitterUrl, '_blank');
+    }
+
+    factButton.addEventListener('click', displayFact);
+    twitterButton.addEventListener('click', shareToTwitter);
+  </script>
+</body>
+</html>
